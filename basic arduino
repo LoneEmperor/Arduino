@@ -1,0 +1,20 @@
+int const NUM_PIXELS = 12;
+int8_t const PIN = 13;
+Adafruit_NeoPixel strip;
+
+void setup() {
+  strip = Adafruit_NeoPixel(NUM_PIXELS, PIN NEO_GRB+NEO_KHZ800);
+  strip.begin();
+  strip.show();
+ 
+  pinMode(2, INPUT_PULLUP);
+}
+
+void loop() {
+  int sensorValue = digitalRead(2);
+  if (sensorvalue == 0) {
+    strip.setPixelColor(0,0x400000);
+  }else{
+     strip.setPixelColor(0,0x000000);
+  }
+  strip.show();
